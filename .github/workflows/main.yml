@@ -1,0 +1,37 @@
+name: Build Play-hours Music for Windows
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Get project
+        uses: actions/checkout@v4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Enable Windows
+        run: flutter config --enable-windows-desktop
+
+      - name: Get packages
+        working-directory: Play-hours-music-source/play-hours-music
+        run: flutter pub get
+
+      - name: Build Windows EXE
+        working-directory: Play-hours-music-source/play-hours-music
+        run: flutter build windows --release
+
+      - name: Upload Windows application
+        uses: actions/upload-artifact@v4
+        with:
+          name: Play-hours-Music-Windows
+          path: Play-hours-music-source/play-hours-music/build/windows/x64/runner/Release/
