@@ -1,0 +1,32 @@
+name: play_hours_music
+description: Native Play-hours music application for Android, Windows and iOS.
+publish_to: none
+version: 1.0.0+1
+environment:
+  sdk: '>=3.5.0 <4.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  supabase_flutter: ^2.8.0
+  audioplayers: ^6.1.0
+  file_picker: 8.3.7
+  image: ^4.5.0
+  share_plus: 10.1.4
+  uuid: ^4.5.0
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.14.3
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/app-icon.jpg
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: assets/app-icon.jpg
+  remove_alpha_ios: true
+  windows:
+    generate: true
+    image_path: assets/app-icon.jpg
+    icon_size: 256
